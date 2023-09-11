@@ -3,8 +3,15 @@
 # 2 = operacoes - Lista
 # 3 = saldo - float
 # 4 = senha - String
-listaContas = [['guilherme',[],[],0.0,'12345'],['joao',[],[],0.0,'12345']]
+listaContas = [{'nome':'guilherme', 'valores': [], 'operacoes': [], 'saldo':0.0,'senha': '12345'},
+               {'nome':'joao', 'valores': [], 'operacoes': [], 'saldo':0.0,'senha': '12345'}
+              ]
+
+
+
 listaFuncionarios = [['joao','12345'],['pedro','12345']]
+
+
 
 senha='12345'
 
@@ -34,7 +41,7 @@ def saque (valor,saldo):
 def buscar_em_vetores(valorBusca,listaBusca):
     index = -1
     for x in range(0,len(listaContas)):
-        if listaBusca[x][0] == valorBusca:
+        if listaBusca[x]['nome'] == valorBusca:
                 index = x
     return index
 
@@ -79,7 +86,7 @@ def adicionarPessoa(tipo):
     elif(tipo==2):
         listaFuncionarios.append([novoUsuario,novaSenha])
 
-    print("Funcionario Adicionado!")
+    print("Pessoa Adicionado!")
 
     
 
@@ -155,10 +162,10 @@ while(True):
 
 
             if(cliente[4]==senhaInformada):
-                nomeUsuario=cliente[0]
-                extrato = cliente[1]
-                operacoes = cliente[2]
-                saldo = cliente[3]
+                nomeUsuario=cliente['nome']
+                extrato = cliente['valores']
+                operacoes = cliente['operacoes']
+                saldo = cliente['saldo']
 
 
                 while(flagCliente):
@@ -181,7 +188,7 @@ while(True):
                     elif(opcao==3):
                         print("Seu Extrato!")
                         for x in  range(0,len(operacoes)):
-                            print(extrato[x],operacoes[x])
+                            print(extrato['valores'],operacoes['operacoes'])
 
 
                     elif(opcao==4):
@@ -191,9 +198,9 @@ while(True):
 
                     elif(opcao==0):
                         flagCliente = False
-                        cliente[1] = extrato
-                        cliente[2] = operacoes 
-                        cliente[3] = saldo
+                        cliente['valores'] = extrato
+                        cliente['valores'] = operacoes 
+                        cliente['saldo'] = saldo
                         print(nomeUsuario," vc foi deslogado.........")
 
 
